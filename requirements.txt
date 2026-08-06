@@ -1,0 +1,16 @@
+transformers==4.55.0
+torch==2.11.0
+accelerate
+omegaconf
+numpy<2.5
+datasets
+modelscope
+torchmetrics
+tqdm
+safetensors
+matplotlib
+pandas
+scipy
+scikit-learn
+biopython
+psutil>=5.9

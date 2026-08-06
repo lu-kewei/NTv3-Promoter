@@ -1,0 +1,53 @@
+_BASE_: [
+  ../../_base_/default_runtime.yaml
+]
+
+max_epochs: 50
+max_length_dna: 128
+lr: 5e-5
+model_name: ./models/NTv3_8M_pre
+class_names: ["promoter"]
+
+model:
+  target: cell.models.ntv3_iPro_mp.HFModelWithHead
+  params:
+    model_name: ${model_name}
+    head_names: ${class_names}
+
+data:
+  workers_per_gpu: 4
+  batch_size: 8
+  train_data:
+    target: cell.datasets.ntv3_iPro_mp.iProMPDataset
+    params:
+      data_path: ./data/IPro_MP/train/Campylobacter_jejuni_subsp._jejuni_81116.csv
+      dna_model_name: ${model_name}
+      max_len: ${max_length_dna}
+  test_data:
+    target: cell.datasets.ntv3_iPro_mp.iProMPDataset
+    params:
+      data_path: ./data/IPro_MP/test/Campylobacter_jejuni_subsp._jejuni_81116.csv
+      dna_model_name: ${model_name}
+      max_len: ${max_length_dna}
+
+ckpt_path:
+
+metrics:
+  train_flag: false
+  types: ["ACC","Precision","Recall","F1","AUC","AUPRC","B_MCC"]
+
+optimizer:
+  type: adamw
+  lr: ${lr}
+  weight_decay: 0.01
+
+loss:
+  type: entropy_loss
+
+val:
+  flag: false
+  interval: 3000
+
+test:
+  flag: true
+  epoch_interval: 1

@@ -1,0 +1,12 @@
+checkpoint_config:
+  interval: 1
+log_config:
+    interval: 50
+  
+ckpt_path: 
+resume_path: 
+eval:
+  flag: false
+
+lr: 5e-5
+max_epochs: 50
