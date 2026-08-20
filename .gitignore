@@ -1,0 +1,107 @@
+# Python caches and tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local configuration
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# IDE and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# Logs, caches, and temporary files
+*.log
+logs/
+.cache/
+tmp/
+*.tmp
+*.previous
+.$*.bkp
+.ipynb_checkpoints/
+
+# Training and experiment outputs
+work_dirs/
+runs/
+outputs/
+checkpoints/
+ckpt/
+results/
+wandb/
+lightning_logs/
+tensorboard/
+*_results.json
+*_results.csv
+*_summary.json
+*_summary.csv
+*_metrics.jsonl
+training_efficiency*.json
+*.npy
+*.npz
+
+# Checkpoints and other generated ML artifacts
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.bin
+*.h5
+*.pkl
+*.joblib
+
+# Downloaded data and third-party repositories/model bundles
+data/
+datasets/
+external/
+ipro-mp/
+models/NTv3_8M_pre/
+
+# Download archives and manuscript artifacts
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.tex
+*.xlsx
+*.pdf
+*.svg
+*.drawio
+
+# Local experiment reports and paper-preparation notes
+/图像含义说明.md
+/docs/2026_07_22_19_02_to_2026_07_23_09_33/
+/docs/2026_07_23_17_44_to_2026_07_23_21_19/*
+!/docs/2026_07_23_17_44_to_2026_07_23_21_19/best_auc_results_all_runs.md
+/docs/NTv3_iPro_methods_technical_audit.md
+/docs/iPro-MP_Table3_editable.md
+/docs/项目全部表格化结果汇总.md
+/docs/项目结构与执行流程地图.md
+/docs/项目技术说明_Scientific_Reports.md
+/docs/测试集推理时间与内存测量说明.md
+
+# Lightweight placeholders may still be committed deliberately
+!data/.gitkeep
+!datasets/.gitkeep

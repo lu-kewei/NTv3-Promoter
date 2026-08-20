@@ -101,8 +101,8 @@ def main():
         localtime = time.strftime("%Y_%m_%d_%H_%M")
         args.work_dir = osp.join('./work_dirs',osp.splitext(osp.basename(args.config))[0],localtime)
         
-    log_dir = osp.join(args.work_dir,"log") # 日志路径
-    ckpt_dir = osp.join(args.work_dir,"ckpt") # 检查点路径
+    log_dir = osp.join(args.work_dir,"log") # 保存的日志路径
+    ckpt_dir = osp.join(args.work_dir,"ckpt") # 保存的检查点路径
 
     os.makedirs(log_dir,exist_ok = True)
     os.makedirs(ckpt_dir,exist_ok = True)
@@ -150,7 +150,7 @@ def main():
 
     else:
         train_dataset = instantiate_from_config(cfg.data.train_data)
-    train_data_loader = DataLoader(
+    train_data_loader = DataLoader( # DataLoader把Dataset包装成一个可以循环读取的对象，把样本组成batch
         train_dataset,
         batch_size = cfg.data.batch_size,
         shuffle = True,
@@ -253,7 +253,7 @@ def main():
             for line in metrics_path.read_text(encoding="utf-8").splitlines()
             if line
         ]
-    for epoch in range(start_epoch,cfg.max_epochs):
+    for epoch in range(start_epoch,cfg.max_epochs): # 最外层epoch训练循环
         epoch_loss = 0
         start_time = time.time()
         log_sum_loss = 0

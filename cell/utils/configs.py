@@ -5,6 +5,7 @@ from omegaconf import OmegaConf
 base_key = "_BASE_"
 
 def load_config(config_path):
+
     config_dir = osp.dirname(config_path)
     base_config = OmegaConf.load(config_path) # 将 YAML 内容转换成 OmegaConf 配置对象(可以按字段名称访问)
     yaml_files = base_config._BASE_ # 获取基础配置
@@ -15,7 +16,7 @@ def load_config(config_path):
     for file in yaml_files:
         file_path = osp.join(config_dir,file)
         if os.path.exists(file_path):
-            config = OmegaConf.load(file_path)
+            config = OmegaConf.load(file_path) # OmegaConf把配置文件转换为允许用点号访问的python字典
             merged_config = OmegaConf.merge(config,merged_config) # 合并基础配置和当前实验配置
         else:
             print(f"文件 {file_path} 不存在，跳过合并。")
